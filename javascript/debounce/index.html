@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing & Throttling</title>
+</head>
+<body>
+    <h1>Debouncing & Throttling</h1>
+</body>
+    <script>
+        function debounce(func, delay) {
+        let timer;
+        return function(...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(this, args), delay);
+        };
+        }
+
+        function throttle(func, limit) {
+        let inThrottle = false;
+        return function(...args) {
+            if (inThrottle) return;
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        };
+        }
+
+
+        const handleNormalScroll   = () => console.log("🚨 Normal Scroll event fired!");
+        const handleDebouncedScroll = debounce(() => console.log("⏱️ DEBOUNCED: You stopped scrolling 1 second ago."), 1000);
+        const handleThrottledScroll = throttle(() => console.log("⏳ THROTTLED: Checking scroll position (every 1 second max)."), 5000);
+
+        document.onmousemove = handleNormalScroll;
+        document.onmousemove = handleDebouncedScroll;
+        // document.onmousemove = handleThrottledScroll;
+    </script>
+</html>

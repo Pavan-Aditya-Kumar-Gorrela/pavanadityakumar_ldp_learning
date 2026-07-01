@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Optimization Assignment</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 500px; margin: 0 auto; }
+        input { width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box; }
+        .controls { margin: 15px 0; }
+        .log-panel { background: #f4f4f4; padding: 15px; border-radius: 5px; min-height: 150px; }
+        .stat { font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Optimized Search Bar</h2>
+    
+    
+    <input type="text" id="search-input" placeholder="Start typing to search...">
+
+    
+    <div class="controls">
+        <label><strong>Execution Mode:</strong></label><br>
+        <input type="radio" id="mode-debounce" name="mode" value="debounce" checked>
+        <label for="mode-debounce">Debounce (Fires 500ms after you STOP typing)</label><br>
+        
+        <input type="radio" id="mode-throttle" name="mode" value="throttle">
+        <label for="mode-throttle">Throttle (Fires every 1000ms WHILE typing)</label>
+    </div>
+
+    
+    <div class="log-panel">
+        <div>Total Raw Keystrokes: <span id="raw-count" class="stat">0</span></div>
+        <div>API Requests Triggered: <span id="api-count" class="stat">0</span></div>
+        <hr>
+        <strong>Console Logs:</strong>
+        <div id="log-output"></div>
+    </div>
+</div>
+
+<script>
+
+
+// Debounce: Postpones execution until 'delay' ms of inactivity
+function debounce(func, delay) {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+
+function throttle(func, limit) {
+    let inThrottle = false;
+    return function(...args) {
+        if (inThrottle) return;
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+    };
+}
+
+
+const searchInput = document.getElementById('search-input');
+const logOutput = document.getElementById('log-output');
+const rawCountEl = document.getElementById('raw-count');
+const apiCountEl = document.getElementById('api-count');
+
+let rawKeystrokes = 0;
+let apiRequests = 0;
+
+
+function makeApiRequest(query) {
+    if (!query.trim()) return; 
+    apiRequests++;
+    apiCountEl.textContent = apiRequests;
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const logMessage = `[${timestamp}] 🚀 API Request sent for: "${query}"`;
+    
+    // Print to our custom UI log
+    logOutput.innerHTML = `<div>${logMessage}</div>` + logOutput.innerHTML;
+    console.log(logMessage);
+}
+
+
+const debouncedSearch = debounce((e) => makeApiRequest(e.target.value), 500);
+const throttledSearch = throttle((e) => makeApiRequest(e.target.value), 1000);
+
+searchInput.addEventListener('input', (e) => {
+    rawKeystrokes++;
+    rawCountEl.textContent = rawKeystrokes;
+
+    const currentMode = document.querySelector('input[name="mode"]:checked').value;
+    
+    if (currentMode === 'debounce') {
+        debouncedSearch(e);
+    } else {
+        throttledSearch(e);
+    }
+});
+</script>
+
+</body>
+</html>
