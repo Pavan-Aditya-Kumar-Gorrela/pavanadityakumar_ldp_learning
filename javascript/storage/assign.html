@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Assignment</h1>
+    <div style=" display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;">
+    <div style="background: #35ba62; margin-right: 50px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-left: 400px;">
+    <h3>Local Count</h3>
+    <button id="increment-btn">Increment</button>
+    <div style="background-color: aquamarine;">
+        <p>Count: <span id="count-value">0</span></p>
+    </div>
+    </div>
+    <div style="background: #df4545; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 400px;">
+    <h3>Session Count</h3>
+    <button id="session-increment-btn">Increment</button>
+    <div style="background-color: lightgray;">
+        <p>Count: <span id="session-count-value">0</span></p>
+    </div>
+    </div>
+    </div>
+</body>
+
+<script>
+
+    const incrementBtn = document.getElementById('increment-btn');
+    const sessionIncrementBtn = document.getElementById('session-increment-btn');
+    const countValue = document.getElementById('count-value');
+    const sessionCountValue = document.getElementById('session-count-value');
+    updateCountValues()
+    incrementBtn.addEventListener("click",()=>{
+        let count = localStorage.getItem("count")?parseInt(localStorage.getItem("count")):0;
+        count++;
+        localStorage.setItem("count",count);
+        countValue.textContent = count;
+    })
+
+    sessionIncrementBtn.addEventListener("click",()=>{
+        let sessionCount = sessionStorage.getItem("sessionCount")?parseInt(sessionStorage.getItem("sessionCount")):0;
+        sessionCount++;
+        sessionStorage.setItem("sessionCount",sessionCount);
+        sessionCountValue.textContent = sessionCount;
+    })
+
+    function updateCountValues() {
+        const count = localStorage.getItem("count") ? parseInt(localStorage.getItem("count")) : 0;
+        const sessionCount = sessionStorage.getItem("sessionCount") ? parseInt(sessionStorage.getItem("sessionCount")) : 0;
+        countValue.textContent = count;
+        sessionCountValue.textContent = sessionCount;
+    }
+
+</script>
+</html>

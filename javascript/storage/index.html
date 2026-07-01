@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Storage</h1>
+</body>
+<script>
+    document.cookie = "username = Aditya";
+    document.cookie = "theme=dark";
+    document.cookie = "expires=Wed, 1 Apr 2026 1:00:00 IST";
+
+    //localStorage 
+    localStorage.setItem("username", "Aditya");
+    localStorage.setItem("theme", "dark");
+    localStorage.removeItem("theme");
+    localStorage.clear();
+    const student = {
+        name: "Aditya",
+        age: 22,
+        city: "Bangalore"
+    };
+
+    localStorage.setItem("student", JSON.stringify(student));
+    const retrievedStudent = JSON.parse(localStorage.getItem("student"));
+    console.log(retrievedStudent);
+
+
+    //sessionStorage
+    sessionStorage.setItem("sessionKey", "sessionValue");
+    sessionStorage.removeItem("sessionKey");
+    sessionStorage.clear();
+
+    //indexedDB
+   const request = indexedDB.open("studentSB", 1);
+
+
+    request.onupgradeneeded = function(event) {
+        const db = event.target.result;
+        const objectStore = db.createObjectStore("students", { keyPath: "id" });
+        objectStore.createIndex("name", "name", { unique: false });
+        objectStore.createIndex("age", "age", { unique: false });
+        console.log("Database structure initialized.");
+    };
+
+
+    request.onsuccess = function(event) {
+        console.log("Database opened successfully!");
+        const db = event.target.result; 
+
+
+        const transaction = db.transaction("students", "readwrite");
+        const store = transaction.objectStore("students");
+        
+        const studentData = { id: 1, name: "Aditya", age: 22 };
+        const addRequest1 = store.add(studentData);
+        addRequest1.onsuccess = function() {
+            console.log("Student Aditya added.");
+        };
+        
+       
+        const addRequest2 = store.add({ id: 2, name: "John", age: 25 });
+        addRequest2.onsuccess = function() {
+            console.log("Student John added.");
+        };
+
+       
+        transaction.oncomplete = function() {
+            console.log("Transaction successfully completed.");
+        };
+
+        transaction.onerror = function(event) {
+            console.error("Transaction failed:", event.target.error);
+        };
+    };
+
+   
+    request.onerror = function(event) {
+        console.error("Database failed to open:", event.target.error);
+    };
+
+</script>
+</html>
