@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Events Demo</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        padding:20px;
+    }
+
+    .box{
+        width:200px;
+        height:100px;
+        background:skyblue;
+        margin-top:20px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+    }
+
+    img{
+        width:200px;
+    }
+
+    input,select{
+        margin:10px 0;
+        display:block;
+        padding:8px;
+    }
+
+    #output{
+        margin-top:20px;
+        color:blue;
+        font-weight:bold;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>JavaScript Events</h2>
+
+<!-- Mouse Events -->
+<button id="clickBtn">Click Me</button>
+<button id="dblBtn">Double Click</button>
+
+<div class="box" id="mouseBox">
+    Hover Over Me
+</div>
+
+<!-- Keyboard Events -->
+<input type="text" id="keyboardInput" placeholder="Type Something">
+
+<!-- Form Events -->
+<input type="text" id="focusInput" placeholder="Focus & Blur">
+
+<select id="course">
+    <option value="">Select Course</option>
+    <option>Java</option>
+    <option>Python</option>
+    <option>JavaScript</option>
+</select>
+
+<form id="myForm">
+    <input type="text" placeholder="Name" required>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Clipboard Events -->
+<input type="text" id="clipboard" placeholder="Copy / Cut / Paste Here">
+
+<!-- Window Events -->
+<img src="https://picsum.photos/200" id="image">
+
+<p id="output"></p>
+
+<script>
+
+const output = document.getElementById("output");
+
+function show(msg){
+    output.innerHTML = msg;
+}
+
+// ----------------------
+// Mouse Events
+// ----------------------
+
+document.getElementById("clickBtn").onclick = () =>{
+    show("Button Clicked");
+};
+
+document.getElementById("dblBtn").ondblclick = () =>{
+    show("Double Clicked");
+};
+
+const box = document.getElementById("mouseBox");
+
+box.onmouseover = ()=>{
+    show("Mouse Over");
+};
+
+box.onmouseout = ()=>{
+    show("Mouse Out");
+};
+
+box.onmousedown = ()=>{
+    show("Mouse Down");
+};
+
+box.onmouseup = ()=>{
+    show("Mouse Up");
+};
+
+box.onmousemove = ()=>{
+    console.log("Mouse Moving");
+};
+
+// ----------------------
+// Keyboard Events
+// ----------------------
+
+const keyInput = document.getElementById("keyboardInput");
+
+keyInput.onkeydown = (e)=>{
+    show("Key Down : " + e.key);
+};
+
+keyInput.onkeyup = (e)=>{
+    show("Key Up : " + e.key);
+};
+
+keyInput.onkeypress = (e)=>{
+    console.log("Key Press : " + e.key);
+};
+
+// ----------------------
+// Form Events
+// ----------------------
+
+const focusInput = document.getElementById("focusInput");
+
+focusInput.onfocus = ()=>{
+    show("Input Focused");
+};
+
+focusInput.onblur = ()=>{
+    show("Input Lost Focus");
+};
+
+focusInput.onchange = ()=>{
+    show("Value Changed");
+};
+
+focusInput.oninput = ()=>{
+    show("Typing...");
+};
+
+document.getElementById("course").onchange = function(){
+    show("Selected : " + this.value);
+};
+
+document.getElementById("myForm").onsubmit = function(e){
+    e.preventDefault();
+    show("Form Submitted");
+};
+
+// ----------------------
+// Clipboard Events
+// ----------------------
+
+const clip = document.getElementById("clipboard");
+
+clip.oncopy = ()=>{
+    show("Copied");
+};
+
+clip.oncut = ()=>{
+    show("Cut");
+};
+
+clip.onpaste = ()=>{
+    show("Pasted");
+};
+
+// ----------------------
+// Window Events
+// ----------------------
+
+window.onload = ()=>{
+    console.log("Page Loaded");
+};
+
+window.onresize = ()=>{
+    console.log("Window Resized");
+};
+
+window.onscroll = ()=>{
+    console.log("Scrolling...");
+};
+
+// ----------------------
+// Image Events
+// ----------------------
+
+document.getElementById("image").onload = ()=>{
+    console.log("Image Loaded");
+};
+
+// ----------------------
+// Context Menu
+// ----------------------
+
+document.oncontextmenu = (e)=>{
+    e.preventDefault();
+    show("Right Click Disabled");
+};
+
+// ----------------------
+// Drag Events
+// ----------------------
+
+box.draggable = true;
+
+box.ondragstart = ()=>{
+    show("Drag Started");
+};
+
+box.ondragend = ()=>{
+    show("Drag Ended");
+};
+
+</script>
+
+</body>
+</html>
