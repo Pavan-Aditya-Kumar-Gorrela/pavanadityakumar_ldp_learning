@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Billing System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+        <h1>
+            <i class="fa-solid fa-utensils"></i>
+            Restaurant Billing System
+        </h1>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- LEFT PANEL -->
+
+        <section class="tables-panel">
+
+            <div class="panel-header">
+
+                <h2>Tables</h2>
+
+                <input
+                    type="text"
+                    id="tableSearch"
+                    placeholder="Search Table..." />
+
+            </div>
+
+            <!-- Tables rendered dynamically -->
+
+            <div
+                class="table-list"
+                id="tables">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RIGHT PANEL -->
+
+        <section class="menu-panel">
+
+            <div class="panel-header">
+
+                <h2>Menu</h2>
+
+                <input
+                    type="text"
+                    id="menuSearch"
+                    placeholder="Search Item / Category..." />
+
+            </div>
+
+            <!-- Menu rendered dynamically -->
+
+            <div
+                class="menu-list"
+                id="menu-items">
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        class="modal"
+        id="orderModal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    Table
+                </h2>
+
+                <button id="closeModal">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>S.No</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Delete</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="orderBody">
+
+                </tbody>
+
+            </table>
+
+
+
+            <div class="bill-footer">
+
+                <h2 id="modalTotal">
+                    ₹0
+                </h2>
+
+                <button id="closeSession">
+
+                    Close Session & Generate Bill
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= APP ================= -->
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
