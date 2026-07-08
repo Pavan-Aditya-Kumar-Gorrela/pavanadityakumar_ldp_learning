@@ -1,11 +1,11 @@
-import {StorePage} from './components/pages/StorePage';
+import EmployeePage from "./employee-directory/components/pages/EmployeePage/Employee.Page"
 
 function App() {
 
   return (
-    <>
-      <StorePage />
-    </>
+    <div style={{ padding: "20px", backgroundColor: "skyblue" }}>
+      <EmployeePage />
+    </div>
   )
 }
 
