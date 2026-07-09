@@ -1,4 +1,4 @@
-import User from "../assets/user.png"
+import User from  "../../assets/user.png"
 const employees = [
     {
         id:1,
