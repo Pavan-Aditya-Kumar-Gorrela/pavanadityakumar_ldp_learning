@@ -1,26 +1,21 @@
-import './Avatar.css';
-interface AvatarProps {
-    /** The URL of the avatar image */
-    src: string;
-    /** The alternative text for the avatar image */
-    alt: string;
-    /** The size of the avatar */
-    size?: 'small' | 'medium' | 'large';
-    /** Optional click handler */
-    onClick?: () => void;
+import React from 'react';
+import styles from './Avatar.module.css';
 
+export interface AvatarProps {
+  src?: string;
+  alt?: string;
+  fallback: string;
+  size?: 'small' | 'medium' | 'large';
 }
 
-const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 'medium', onClick }) => {
-    const sizeClass = `avatar-${size}`;
-    return (
-        <img
-            src={src}
-            alt={alt}
-            className={sizeClass}
-            onClick={onClick}
-        />
-    );
+export const Avatar: React.FC<AvatarProps> = ({ src, alt = '', fallback, size = 'medium' }) => {
+  return (
+    <div className={`${styles.avatar} ${styles[size]}`}>
+      {src ? (
+        <img src={src} alt={alt} className={styles.image} />
+      ) : (
+        <span className={styles.fallback}>{fallback.substring(0, 2).toUpperCase()}</span>
+      )}
+    </div>
+  );
 };
-
-export default Avatar;

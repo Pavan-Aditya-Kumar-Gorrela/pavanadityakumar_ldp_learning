@@ -1,31 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Avatar from './Avatar';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Avatar } from './Avatar';
 
-const meta ={
-    title:'Atoms/Avatar',
-    component:Avatar,
-    parameters:{
-        layout:'centered'
-    },
-    tags:['autodocs'],
-    argTypes:{
-        size:{
-            control:{ type:'select' },
-            options:['small','medium','large']
-        }
-
-    }
-
+const meta: Meta<typeof Avatar> = {
+  title: 'Components/Avatar',
+  component: Avatar,
+  args: { fallback: 'JD', size: 'medium' },
 } satisfies Meta<typeof Avatar>;
-
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-    args:{
-        src:'https://via.placeholder.com/150',
-        alt:'Default Avatar',
-        size:'medium'
-    }
-};
-
+type Story = StoryObj<typeof Avatar>;
+export const ImageAvatar: Story = { args: { src: 'https://picsum.photos/100' } };
+export const FallbackAvatar: Story = {};
