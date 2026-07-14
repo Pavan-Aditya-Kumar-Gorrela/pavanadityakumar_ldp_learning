@@ -4,6 +4,10 @@ import { TableCell } from './TableCell';
 const meta: Meta<typeof TableCell> = {
   title: 'Components/TableCell',
   component: TableCell,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { children: 'Data point', isHeader: false, align: 'left' },
 } satisfies Meta<typeof TableCell>;
 export default meta;

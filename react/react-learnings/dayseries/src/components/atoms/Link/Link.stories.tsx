@@ -4,6 +4,10 @@ import { Link } from './Link';
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',
   component: Link,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { children: 'Read more...', href: '#', variant: 'inline' },
 } satisfies Meta<typeof Link>;
 export default meta;

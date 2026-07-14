@@ -1,21 +1,17 @@
-// import FunctionalComponent from "./ClassVsFunctionalComponents/renderTSX/function";
-// import ClassComponent from "./ClassVsFunctionalComponents/renderTSX/class";
-  // import FunctionalComponent from "./ClassVsFunctionalComponents/PassingProps/function";
-  // import ClassComponent from "./ClassVsFunctionalComponents/PassingProps/class";
-
-// import ClassComponent from "./ClassVsFunctionalComponents/HandlingState/class"
-// import FunctionalComponent from "./ClassVsFunctionalComponents/HandlingState/function"
-// import FunctionalComponent from "./ClassVsFunctionalComponents/LifecycleMethods/function"
-// import ClassComponent from "./ClassVsFunctionalComponents/LifecycleMethods/class"
-
-import EmployeePage from './employee-directory/components/pages/EmployeePage/Employee.Page';
+import Parent from "./ParentVsChildComponents/Rerendering/Parent";
+// import Parent from "./ParentVsChildComponents/renderingOrder/Parent";
+// import Parent from "./ClassVsFunctionalComponents/LifecycleComponents/class-function/Parent";
+// import FunctionalParent from "./ClassVsFunctionalComponents/LifecycleComponents/class-function/FunctionalParent";
+import UserPage from "./MUI/UserPage";
 function App() {
 
   return (
     <>
-      {/* <FunctionalComponent/>
-      <ClassComponent /> */}
-      <EmployeePage/>
+      
+      {/* <Parent props={undefined as never} /> */}
+      {/* <FunctionalParent /> */}
+      <Parent />
+      <UserPage />
     </>
   )
 }

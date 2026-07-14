@@ -4,6 +4,10 @@ import { Input } from './Input';
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
   component: Input,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { placeholder: 'Type something...', disabled: false, error: false },
 } satisfies Meta<typeof Input>;
 export default meta;

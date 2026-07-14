@@ -4,6 +4,10 @@ import { Label } from './Label';
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { children: 'Email Address', required: false },
 } satisfies Meta<typeof Label>;
 export default meta;

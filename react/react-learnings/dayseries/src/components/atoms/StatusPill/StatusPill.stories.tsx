@@ -4,6 +4,10 @@ import { StatusPill } from './StatusPill';
 const meta: Meta<typeof StatusPill> = {
   title: 'Components/StatusPill',
   component: StatusPill,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { status: 'success', children: 'Active' },
 } satisfies Meta<typeof StatusPill>;
 export default meta;

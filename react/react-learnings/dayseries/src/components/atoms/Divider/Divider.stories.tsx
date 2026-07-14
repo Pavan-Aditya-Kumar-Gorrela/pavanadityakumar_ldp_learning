@@ -4,6 +4,10 @@ import { Divider } from './Divider';
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider',
   component: Divider,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Divider>;
 export default meta;
 

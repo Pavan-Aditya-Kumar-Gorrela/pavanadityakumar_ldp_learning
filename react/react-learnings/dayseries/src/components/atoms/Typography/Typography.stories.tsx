@@ -4,6 +4,10 @@ import { Typography } from './Typography';
 const meta: Meta<typeof Typography> = {
   title: 'Components/Typography',
   component: Typography,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { children: 'Sphinx of black quartz, judge my vow.', variant: 'body' },
 } satisfies Meta<typeof Typography>;
 export default meta;

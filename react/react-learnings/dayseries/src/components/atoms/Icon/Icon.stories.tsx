@@ -4,6 +4,10 @@ import { Icon } from './Icon';
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icon',
   component: Icon,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   args: { name: 'search', size: 24, color: '#333333' },
 } satisfies Meta<typeof Icon>;
 export default meta;
