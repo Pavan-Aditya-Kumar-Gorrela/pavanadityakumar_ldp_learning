@@ -1,18 +1,14 @@
-import Parent from "./ParentVsChildComponents/Rerendering/Parent";
-// import Parent from "./ParentVsChildComponents/renderingOrder/Parent";
-// import Parent from "./ClassVsFunctionalComponents/LifecycleComponents/class-function/Parent";
-// import FunctionalParent from "./ClassVsFunctionalComponents/LifecycleComponents/class-function/FunctionalParent";
-import UserPage from "./MUI/UserPage";
+import User from "./Props/types/Props"
+import Greet from "./Props/DefaultValues/Props"
 function App() {
 
   return (
     <>
-      
-      {/* <Parent props={undefined as never} /> */}
-      {/* <FunctionalParent /> */}
-      <Parent />
-      <UserPage />
+      <User name="Alice" age={30} isAdmin={true} skills={["JavaScript", "TypeScript"]} onClick={() => console.log("Button clicked!")} />
+      <Greet  />
+
     </>
+    
   )
 }
 
