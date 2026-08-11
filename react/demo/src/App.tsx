@@ -1,13 +1,10 @@
-import EmployeePage from "./employee-directory/components/pages/EmployeePage/Employee.Page"
+import Index from "./OAuth/Index"
 
-function App() {
 
-  return (
-    <div style={{ padding: "20px", backgroundColor: "skyblue" }}>
-      <EmployeePage />
-    </div>
+const App = () =>{
+  return(
+    <Index/>
   )
 }
 
-
-export default App
+export default App;
