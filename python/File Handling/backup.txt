@@ -1,0 +1,6 @@
+101,Aditya,50000
+102,Rahul,65000
+103,Sai,72000
+104,Krishna,abc
+105,Ram,-2000
+106,Pavan,82000
