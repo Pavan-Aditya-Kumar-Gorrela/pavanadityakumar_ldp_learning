@@ -1,5 +1,3 @@
-from typing import Self
-
 from ultralytics import YOLO
 
 class YOLOModel:
