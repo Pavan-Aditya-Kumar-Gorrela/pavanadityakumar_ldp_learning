@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.nox/
+.tox/
+coverage.xml
+
+# IDEs & Code Editors
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Database & SQLite files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs & Runtime Data
+*.log
+logs/
+
+# FastAPI / Alembic Migration cache (if using Alembic)
+alembic.ini.dev
+
+# OS specific files
+.DS_Store
+Thumbs.db
